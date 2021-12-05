@@ -8,11 +8,9 @@ def home():  # put application's code here
     return render_template('base.html')
 
 
-@app.route('/test')
+@app.route('/new')
 def test():  # put application's code here
-    return render_template('test.html')
-
-
+    return render_template('new_base.html')
 
 
 if __name__ == '__main__':
