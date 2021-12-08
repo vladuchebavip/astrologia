@@ -1,164 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="description" content="Bootstrap Sub-Menus">
+    <meta name="keywords" content="bootstrap dropdown jquery-plugin submenu">
+    <meta name="author" content="Vasilii A.">
+    <meta name="robots" content="nofollow">
+    <meta name="google" content="notranslate">
+
+    <title>Bootstrap-submenu</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="static/dist/css/bootstrap-submenu.css">
+    <link rel="stylesheet" href="/static/dist/css/bootstrap-submenu.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.5.0/styles/default.min.css">
-    <link rel="stylesheet" href="static/css/docs.css">
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/docs.css">
+    {% block head %}
+    {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.js" defer></script>
     <script src="https://unpkg.com/@highlightjs/cdn-assets@10.5.0/highlight.js" defer></script>
-    <script src="static/dist/js/bootstrap-submenu.js" defer></script>
-    <script src="static/js/docs.js" defer></script>
-
+    <script src="/static/dist/js/bootstrap-submenu.js" defer></script>
+    <script src="/static/js/docs.js" defer></script>
 </head>
-<body>
-<div class="container">
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<body>
+<div class="container py-3" id="container">
+
+
+    <nav class="navbar navbar-light bg-light navbar-expand-sm mb-3">
+        <a class="navbar-brand">Navbar</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Главная</a>
                 </li>
 
-
-
-
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
                         Астрология
                     </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Знаки зодиака</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">12 знаков зодиака</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Овен</a></li>
-                                <li><a tabindex="-1" href="#">Телец</a></li>
-                                <li><a tabindex="-1" href="#">Близнец</a></li>
-                                <li><a tabindex="-1" href="#">Рак</a></li>
-                                <li><a tabindex="-1" href="#">Лев</a></li>
-                                <li><a tabindex="-1" href="#">Дева</a></li>
-                                <li><a tabindex="-1" href="#">Весы</a></li>
-                                <li><a tabindex="-1" href="#">Скорпион</a></li>
-                                <li><a tabindex="-1" href="#">Стрелец</a></li>
-                                <li><a tabindex="-1" href="#">Козерог</a></li>
-                                <li><a tabindex="-1" href="#">Водолей</a></li>
-                                <li><a tabindex="-1" href="#">Рыба</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Китайский гороскоп</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">12 годовых животных</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Год Крысы</a></li>
-                                <li><a tabindex="-1" href="#">Год Быка</a></li>
-                                <li><a tabindex="-1" href="#">Год Тигра</a></li>
-                                <li><a tabindex="-1" href="#">Год Кота</a></li>
-                                <li><a tabindex="-1" href="#">Год Дракона</a></li>
-                                <li><a tabindex="-1" href="#">Год Змеи</a></li>
-                                <li><a tabindex="-1" href="#">Год Коня</a></li>
-                                <li><a tabindex="-1" href="#">Год Овцы</a></li>
-                                <li><a tabindex="-1" href="#">Год Обезьяны</a></li>
-                                <li><a tabindex="-1" href="#">Год Петуха</a></li>
-                                <li><a tabindex="-1" href="#">Год Собаки</a></li>
-                                <li><a tabindex="-1" href="#">Год Кабана</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div class="dropdown-menu">
+                        <div class="dropdown dropright dropdown-submenu">
+                            <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Знаки
+                                зодиака
+                            </button>
+                            <div class="dropdown-menu">
+
+                                <button class="dropdown-item" type="button">Овен</button>
+                                <button class="dropdown-item" type="button">Телец</button>
+                                <button class="dropdown-item" type="button">Близнец</button>
+                                <button class="dropdown-item" type="button">Рак</button>
+                                <button class="dropdown-item" type="button">Лев</button>
+                                <button class="dropdown-item" type="button">Дева</button>
+                                <button class="dropdown-item" type="button">Весы</button>
+                                <button class="dropdown-item" type="button">Скорпион</button>
+                                <button class="dropdown-item" type="button">Стрелец</button>
+                                <button class="dropdown-item" type="button">Козерог</button>
+                                <button class="dropdown-item" type="button">Водолей</button>
+                                <button class="dropdown-item" type="button">Рыба</button>
+                            </div>
+                        </div>
+
+                        <div class="dropdown dropright dropdown-submenu">
+                            <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">
+                                Китайский гороскоп
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" type="button">Год Крысы</button>
+                                <button class="dropdown-item" type="button">Год Быка</button>
+                                <button class="dropdown-item" type="button">Год Тигра</button>
+                                <button class="dropdown-item" type="button">Год Кота</button>
+                                <button class="dropdown-item" type="button">Год Дракона</button>
+                                <button class="dropdown-item" type="button">Год Змеи</button>
+                                <button class="dropdown-item" type="button">Год Коня</button>
+                                <button class="dropdown-item" type="button">Год Овцы</button>
+                                <button class="dropdown-item" type="button">Год Обезьяны</button>
+                                <button class="dropdown-item" type="button">Год Петуха</button>
+                                <button class="dropdown-item" type="button">Год Собаки</button>
+                                <button class="dropdown-item" type="button">Год Кабана</button>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
                         Психология
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Системно-векторная психология</a></li>
-                        <li><a class="dropdown-item" href="#">Темпераменты</a></li>
-                        <li><a class="dropdown-item" href="#">Эмоциональное выражение</a></li>
-                    </ul>
+
+                    <div class="dropdown-menu">
+
+                        <button class="dropdown-item" type="button">Системно-векторная психология</button>
+                        <button class="dropdown-item" type="button">Темпераменты</button>
+                        <button class="dropdown-item" type="button">Эмоциональное выражение</button>
+
+
+                    </div>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
                         Философия жизни
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+
+                    <div class="dropdown-menu">
+
+                        <button class="dropdown-item" type="button">343243</button>
+                        <button class="dropdown-item" type="button">23423423</button>
+                        <button class="dropdown-item" type="button">23423</button>
+
+
+                    </div>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
                         Йога
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Семь чакр</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Муладхара</a></li>
-                                <li><a tabindex="-1" href="#">Свадхистана</a></li>
-                                <li><a tabindex="-1" href="#">Манипура</a></li>
-                                <li><a tabindex="-1" href="#">Анахата</a></li>
-                                <li><a tabindex="-1" href="#">Вишудха</a></li>
-                                <li><a tabindex="-1" href="#">Аджна</a></li>
-                                <li><a tabindex="-1" href="#">Сахасрара</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <div class="dropdown-menu">
+                        <div class="dropdown dropright dropdown-submenu">
+                            <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Семь чакр
+                            </button>
+                            <div class="dropdown-menu">
 
-                    </ul>
+                                <button class="dropdown-item" type="button">Муладхара</button>
+                                <button class="dropdown-item" type="button">Свадхистана</button>
+                                <button class="dropdown-item" type="button">Манипура</button>
+                                <button class="dropdown-item" type="button">Анахата</button>
+                                <button class="dropdown-item" type="button">Вишудха</button>
+                                <button class="dropdown-item" type="button">Аджна</button>
+                                <button class="dropdown-item" type="button">Сахасрара</button>
+                                <button class="dropdown-item" type="button">Скорпион</button>
+                                <button class="dropdown-item" type="button">Стрелец</button>
+                                <button class="dropdown-item" type="button">Козерог</button>
+                                <button class="dropdown-item" type="button">Водолей</button>
+                                <button class="dropdown-item" type="button">Рыба</button>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">О сайте</a>
-                </li>
-
 
             </ul>
-
         </div>
-    </div>
-</nav>
+    </nav>
+
+
+</div>
+
+<a class="js-scroll-top scroll-top btn btn-primary btn-sm hidden" href="#container" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+    </svg>
+</a>
+{% block content %}
+{% endblock %}
 </body>
 </html>

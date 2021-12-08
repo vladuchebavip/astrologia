@@ -10,7 +10,12 @@ def home():  # put application's code here
 
 @app.route('/new')
 def test():  # put application's code here
-    return render_template('new_base.html')
+    return render_template('base.html')
+
+@app.route('/signup')
+def signup():  # put application's code here
+    return render_template('registration.html')
+
 
 
 if __name__ == '__main__':

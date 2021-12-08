@@ -1,45 +1,88 @@
 {% extends "base.html" %}
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+{% block head %}
+    <link rel="stylesheet" href="/static/css/password.css">
+    <script src="/static/js/password.js" defer></script>
+{% endblock %}
+{% block content %}
+    <div class="col-12">
+        <div class="card border-primary mb-3 " style="width: 22rem;">
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Почта</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password1" name="password1">
+                    </div>
+                    <div class="mb-3">
+                        <div class="password">
+                            <input type="password" id="password-input" placeholder="Введите пароль" name="password">
+                            <a href="#" class="password-control"></a>
+                        </div>
+{#                        <label for="password2" class="form-label">Повторите пароль</label>#}
+{#                        <input type="password" class="form-control" id="password2" name="password2">#}
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Фамилия</label>
+                        <input type="text" class="form-control" id="surname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Отчество</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputDate">Дата рождения</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Пол</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected></option>
+                                <option value="1">Мужской</option>
+                                <option value="2">Женский</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Область специализации</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected></option>
+                                <option value="1">Астролог</option>
+                                <option value="2">Нумеролог</option>
+                                <option value="2">Психолог</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Номер телефона</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Я даю согласие на обработку моих
+                            персональных
+                            данных</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="surname" class="form-label">Фамилия</label>
-        <input type="text" class="form-control" id="surname">
-    </div>
-    <div class="mb-3">
-        <label for="name" class="form-label">Имя</label>
-        <input type="text" class="form-control" id="name">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Отчество</label>
-        <input type="text" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Пол</label>
-        <input type="text" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Область специализации</label>
-        <input type="text" class="form-control" id="exampleInputPassword1">
-    </div>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Номер телефона</label>
-        <input type="text" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Я даю согласие на обработку моих персональных данных,
-            указанных в этой веб-форме, а также данных, которые будут указаны мной в личном кабинете после регистрации,
-            включаю право поручения обработки другим лицам, на условиях, изложенных в Политике в отношении обработки
-            персональных данных в Интернете, с которой я ознакомился.</label>
-        <input type="text" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+{% endblock %}
