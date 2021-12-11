@@ -1,0 +1,30 @@
+a:not([href]) {
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.dropdown-item:disabled,
+.dropdown-item.disabled,
+.dropdown-header,
+.dropdown-divider {
+  pointer-events: none;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0.7;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.scroll-top:hover {
+  opacity: 1;
+}
