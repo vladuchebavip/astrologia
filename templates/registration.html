@@ -4,90 +4,95 @@
     <script src="/static/js/password.js" defer></script>
 {% endblock %}
 {% block content %}
+    {% for cat, message in get_flashed_messages(True) %}
+        <div class="flash {{ cat }}">{{ message }}</div>
+    {% endfor %}
 
-        <div class="page-hero d-flex align-items-center justify-content-center">
 
-            <div class="card border-primary mb-3 " style="width: 22rem;">
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Почта</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password1" class="form-label">Пароль</label>
-                            <input type="password" class="form-control" id="password1" name="password1">
-                        </div>
-                        <div class="mb-3">
-                            <div class="password">
-                                <input type="password" id="password-input" placeholder="Введите пароль" name="password">
-                                <a href="#" class="password-control"></a>
+    <div class="page-hero d-flex align-items-center justify-content-center">
+
+        <div class="card border-primary mb-3 " style="width: 22rem;">
+            <div class="card-body">
+                <form action="{{ url_for('sign_up') }}" role="form" class="form-horizontal" method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Почта</label>
+                        <input type="email" class="form-control" id="email" name ="email"
+                               aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password1" name="password1">
+                    </div>
+                    <div class="mb-3">
+{#                        <div class="password">#}
+{#                            <input type="password" id="password-input" placeholder="Введите пароль" name="password">#}
+{#                            <a href="#" class="password-control"></a>#}
+{#                        </div>#}
+                        <label for="password2" class="form-label">Повторите пароль</label>
+                        <input type="password" class="form-control" id="password2" name="password2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Фамилия</label>
+                        <input type="text" class="form-control" id="surname" name="surname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="second_name" class="form-label">Отчество</label>
+{#                        label - подпись к полю ввода, for - привязка к конкретному полю ввода, #}
+                        <input type="text" class="form-control" id="second_name" name="second_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date">Дата рождения</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="gender">Пол</label>
                             </div>
-                            {#                        <label for="password2" class="form-label">Повторите пароль</label>#}
-                            {#                        <input type="password" class="form-control" id="password2" name="password2">#}
-                        </div>
-                        <div class="mb-3">
-                            <label for="surname" class="form-label">Фамилия</label>
-                            <input type="text" class="form-control" id="surname">
-                        </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Имя</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Отчество</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputDate">Дата рождения</label>
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Пол</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected></option>
-                                    <option value="1">Мужской</option>
-                                    <option value="2">Женский</option>
+                            <select class="custom-select" id="gender" name="gender">
+                                <option selected></option>
+                                <option value="Мужской">Мужской</option>
+                                <option value="Женский">Женский</option>
 
-                                </select>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="specialization">Область
+                                    специализации</label>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Область
-                                        специализации</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected></option>
-                                    <option value="1">Астролог</option>
-                                    <option value="2">Нумеролог</option>
-                                    <option value="2">Психолог</option>
+                            <select class="custom-select" id="specialization" name="specialization">
+                                <option selected></option>
+                                <option value="Астролог">Астролог</option>
+                                <option value="Нумеролог">Нумеролог</option>
+                                <option value="Психолог">Психолог</option>
 
-                                </select>
-                            </div>
+                            </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Номер телефона</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Номер телефона</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="mb-3">
 
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Я даю согласие на обработку моих
-                                персональных
-                                данных</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agreement" name="agreement">
+                        <label class="form-check-label" for="agreement">Я даю согласие на обработку моих
+                            персональных
+                            данных</label>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Зарегистрироваться"/>
+                </form>
             </div>
         </div>
+    </div>
 
 {% endblock %}
