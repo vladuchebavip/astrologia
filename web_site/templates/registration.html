@@ -5,9 +5,8 @@
 {% endblock %}
 {% block content %}
     {% for cat, message in get_flashed_messages(True) %}
-        <div class="flash {{ cat }}">{{ message }}</div>
+        <div class="alert alert-{{ cat }}" role="alert">{{ message }}</div>
     {% endfor %}
-
 
     <div class="page-hero d-flex align-items-center justify-content-center">
 
@@ -16,8 +15,7 @@
                 <form action="{{ url_for('auth.sign_up') }}" role="form" class="form-horizontal" method="POST">
                     <div class="mb-3">
                         <label for="email" class="form-label">Почта</label>
-                        <input type="email" class="form-control" id="email" name ="email"
-                               aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="email" name ="email">
                     </div>
                     <div class="mb-3">
                         <label for="password1" class="form-label">Пароль</label>
