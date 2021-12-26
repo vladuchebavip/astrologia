@@ -15,5 +15,5 @@ class Experts(db.Model, UserMixin):
     password = db.Column(db.String(100))
     birthday = db.Column(db.DateTime(timezone=True))  # можем хранить данные
     gender = db.Column(db.Boolean)  # Буливские значение - True и False
-    specialty = db.Column(db.String(50))  # специализация
+    specialization = db.Column(db.String(50))  # специализация
     phone = db.Column(db.String(15))  # номер телфона - строка
