@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from .models import Experts
 
+
 # В этом файлике описана логика, связанная с авторизацией на сайте и регистрацией
 
 auth = Blueprint("auth", __name__)
@@ -61,7 +62,7 @@ def sign_up():
             flash('User created!')
             return redirect(url_for('views.home'))
 
-    return render_template("registration.html")
+    return render_template("registration.html",user = current_user)
 
 # идет регистрация и авторизация
 
@@ -82,4 +83,9 @@ def login():
         else:
             flash('Данный e-mail не зарегистрирован', category='danger')
 
-    return render_template("login.html")
+    return render_template("login.html",user = current_user)
+
+@auth.route("/my_profile")
+def my_profile():
+    return render_template("my_profile.html",user = current_user)
+
