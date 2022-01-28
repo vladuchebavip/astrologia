@@ -89,3 +89,9 @@ def login():
 @auth.route("/my_profile")
 def my_profile():
     return render_template("my_profile.html", user=current_user)
+
+
+@auth.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("views.home", user=current_user))

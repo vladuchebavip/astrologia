@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Мой профиль</h1>
+    <h1>Мой профиль</h1>
     <h2>Здравствуйте, {{ user.name }}</h2>
-{% endblock % %}
+    <h2>Ваша специальность, {{ user.specialization }}</h2>
+    {% if user.gender == True %}
+        <h2>Ваш пол мужской</h2>
+    {% else %}
+        <h2>Ваш пол женский</h2>
+    {% endif %}
+    <a href= {{ url_for("auth.logout") }}>
+        <input type="submit" class="btn btn-primary" value="Выйти"/>
+    </a>
+    <input type="submit" class="btn btn-primary" value="Редактировать"/>
+{% endblock %}
