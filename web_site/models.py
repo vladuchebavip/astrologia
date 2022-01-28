@@ -2,6 +2,7 @@ from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
+
 # В этом файле описаны таблицы из Базы данных
 
 

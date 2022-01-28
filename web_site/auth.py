@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from .models import Experts
 
-
 # В этом файлике описана логика, связанная с авторизацией на сайте и регистрацией
 
 auth = Blueprint("auth", __name__)
@@ -22,7 +21,7 @@ def sign_up():
         surname = request.form.get("surname")
         second_name = request.form.get("second_name")
         date = request.form.get("date")
-        gender = request.form.get("gender")=="Мужской"
+        gender = request.form.get("gender") == "Мужской"
         specialization = request.form.get("specialization")
         phone = request.form.get("phone")
         agreement = request.form.get("agreement")
@@ -56,13 +55,14 @@ def sign_up():
             expert = Experts(email=email, name=name, password=generate_password_hash(
                 password1, method='sha256'), birthday=date_parsed, gender=gender, surname=surname,
                              second_name=second_name, specialization=specialization, phone=phone)
-            db.session.add(expert) #database.session.add(добавить)
-            db.session.commit() #database.session.commit(сохранить)
+            db.session.add(expert)  # database.session.add(добавить)
+            db.session.commit()  # database.session.commit(сохранить)
             login_user(expert, remember=True)
             flash('User created!')
             return redirect(url_for('views.home'))
 
-    return render_template("registration.html",user = current_user)
+    return render_template("registration.html", user=current_user)
+
 
 # идет регистрация и авторизация
 
@@ -83,9 +83,9 @@ def login():
         else:
             flash('Данный e-mail не зарегистрирован', category='danger')
 
-    return render_template("login.html",user = current_user)
+    return render_template("login.html", user=current_user)
+
 
 @auth.route("/my_profile")
 def my_profile():
-    return render_template("my_profile.html",user = current_user)
-
+    return render_template("my_profile.html", user=current_user)
