@@ -12,7 +12,9 @@
 
         <div class="card border-primary mb-3 " style="width: 22rem;">
             <div class="card-body">
-                <form action="{{ url_for('auth.sign_up') }}" role="form" class="form-horizontal" method="POST">
+
+                <form action="{% block form_link %}{{ url_for('auth.sign_up') }}{% endblock %}" role="form" class="form-horizontal" method="POST">
+
                     <div class="mb-3">
                         <label for="email" class="form-label">Почта</label>
                         <input type="email" class="form-control" id="email" name="email">
