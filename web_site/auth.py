@@ -142,16 +142,12 @@ def edit():
             current_user.name = name
             current_user.password = generate_password_hash(password1, method='sha256')
             current_user.surname = surname
-            current_user.name = name
             current_user.second_name = second_name
             current_user.date = date
-
-
-
-            db.session.add(expert)  # database.session.add(добавить)
-            db.session.commit()  # database.session.commit(сохранить)
-            login_user(expert, remember=True)
-            flash('User created!')
-            return redirect(url_for('views.home'))
-
+            current_user.gender = gender
+            current_user.specialization = specialization
+            current_user.phone = phone
+            db.session.commit()
+            login_user(current_user, remember=True)
+            return redirect(url_for("auth.my_profile"))
     return render_template("edit.html", user=current_user)
