@@ -1,4 +1,17 @@
-{% extends "base.html"  %}
-{% for expert in experts %}
-<h1>{{expert.name}}</h1>
-{% endfor  %}
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+           Эксперты
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for expert in experts %}
+                <a href = "{{ url_for("views.experts_info",id=expert.id) }}">
+                  <li class="list-group-item">{{ expert.name }} {{ expert.specialization }}</li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -10,9 +10,9 @@ from .models import Experts
 auth = Blueprint("auth", __name__)
 
 
-@auth.route("/sign_up", methods=['GET', 'POST'])
-def sign_up():
-    if request.method == 'POST':
+@auth.route("/sign_up", methods=['GET', 'POST']) # Get- попасть, Post- списать регистрация, на 64 меняем. Пометка фреймворку, когда нужно запускать sing up
+def sign_up(): # регистрация
+    if request.method == 'POST': # Списывает и одобряет регистрацию
         print(request.form)
         email = request.form.get("email")
         name = request.form.get("name")
@@ -54,27 +54,27 @@ def sign_up():
 
             expert = Experts(email=email, name=name, password=generate_password_hash(
                 password1, method='sha256'), birthday=date_parsed, gender=gender, surname=surname,
-                             second_name=second_name, specialization=specialization, phone=phone)
+                             second_name=second_name, specialization=specialization, phone=phone) # Красная - название столбца в базе данных, белое - название переменной в которой хранятся данные считанные с формы, в которую пользователь ввёл их
             db.session.add(expert)  # database.session.add(добавить)
             db.session.commit()  # database.session.commit(сохранить)
             login_user(expert, remember=True)
             flash('User created!')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('auth.my_profile')) # после регистрации, пересылаем пользователя на старницу с личными данными №
 
-    return render_template("registration.html", user=current_user)
+    return render_template("registration.html", user=current_user) # возращаёт шаблон со страницы регистрации
 
 
 # идет регистрация и авторизация
 
-@auth.route("/login", methods=['GET', 'POST'])
-def login():
+@auth.route("/login", methods=['GET', 'POST']) # запуск страницы с авторизацией, вход логимся
+def login(): # Пользователь вводит данные, далее данная функция проверяет данные на корректность
     if request.method == 'POST':
-        email = request.form.get("email")
-        password = request.form.get("password")
+        email = request.form.get("email") # получаем данные с фронтеда
+        password = request.form.get("password") # получаем вводимый пароль
         remember_me = request.form.get("remember_me") == ""
-        expert = Experts.query.filter_by(email=email).first()
-        if expert:
-            if check_password_hash(expert.password, password):
+        expert = Experts.query.filter_by(email=email).first() # красное - название столбца в базе данных. Находит в базе пользователя, по e-mail который был введён
+        if expert: # если мы нашли такого пользователя в базе данных
+            if check_password_hash(expert.password, password): # проверяем пароль. expert.password - сохранённый пароль в базе данных, password- ввёл пользователь
                 flash("Вы успешно авторизовались!", category='success')
                 login_user(expert, remember=remember_me)
                 return redirect(url_for('views.home'))
@@ -86,19 +86,19 @@ def login():
     return render_template("login.html", user=current_user)
 
 
-@auth.route("/my_profile")
+@auth.route("/my_profile") # мой профиль
 def my_profile():
     return render_template("my_profile.html", user=current_user)
 
 
-@auth.route("/logout")
+@auth.route("/logout") # выход из аккаунта
 def logout():
     logout_user()
     return redirect(url_for("views.home", user=current_user))
 
-@auth.route("/edit", methods=['GET', 'POST'])
+@auth.route("/edit", methods=['GET', 'POST']) # редактирование профиля
 def edit():
-    if request.method == 'POST':
+    if request.method == 'POST': # все данные пользователя, в чём отличие?
         print(request.form)
         email = request.form.get("email")
         name = request.form.get("name")
@@ -136,7 +136,7 @@ def edit():
         elif not min_date <= date_parsed <= max_date:
             flash("Введеная дата рождения не корректна.", category='danger')
 
-        else:
+        else: #   ОСТАНОВИЛСЯ ТУТ
 
             current_user.email = email
             current_user.name = name
@@ -148,6 +148,6 @@ def edit():
             current_user.specialization = specialization
             current_user.phone = phone
             db.session.commit()
-            login_user(current_user, remember=True)
-            return redirect(url_for("auth.my_profile"))
+            login_user(current_user, remember=True) # что данная функция делает?
+            return redirect(url_for("auth.my_profile")) # что данная функция делает?
     return render_template("edit.html", user=current_user)
