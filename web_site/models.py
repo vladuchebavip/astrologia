@@ -18,3 +18,10 @@ class Experts(db.Model, UserMixin):
     gender = db.Column(db.Boolean)  # Буливские значение - True и False
     specialization = db.Column(db.String(50))  # специализация
     phone = db.Column(db.String(15))  # номер телфона - строка
+
+
+class Zodiacs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # id - номер знака зодиака в базе данных
+    name = db.Column(db.String(20))
+    text = db.Column(db.String(1000))
+    picture_link = db.Column(db.String(100))
