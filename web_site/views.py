@@ -36,6 +36,7 @@ def example():
 
 @views.route('/zodiac/<name>')
 def zodiac_info(name):
+    print(name)
     zodiac = Zodiacs.query.filter_by(name=name).first()
     if not zodiac:
         return render_template("no_expert.html")

@@ -1,4 +1,7 @@
-{% extends "base html" %}
+{% extends "base.html" %}
+{% block content %}
+<h1>информация о знаке зодиака</h1>
 <h1>{{ zodiac.name }}</h1>
 <div>{{ zodiac.text }}</div>
-<img src="{{zodiac.picture_link}}">
+<img src="{{ url_for('static', filename={{ zodiac.picture_link }}) }}">
+{% endblock %}
