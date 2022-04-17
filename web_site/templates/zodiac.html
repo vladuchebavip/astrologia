@@ -4,4 +4,5 @@
 <h1>{{ zodiac.name }}</h1>
 <div>{{ zodiac.text }}</div>
 <img src="{{ url_for('static', filename={{ zodiac.picture_link }}) }}">
+<img src="{{ url_for('static', filename="{{ zodiac.picture_link }}") }}" alt="Картинка">
 {% endblock %}
