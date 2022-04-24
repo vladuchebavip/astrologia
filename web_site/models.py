@@ -23,5 +23,11 @@ class Experts(db.Model, UserMixin):
 class Zodiacs(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # id - номер знака зодиака в базе данных
     name = db.Column(db.String(20))
-    text = db.Column(db.String(1000))
+    text = db.Column(db.Text())
+    picture_link = db.Column(db.String(100))
+
+class AgesHoroscop(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # id - номер знака зодиака в базе данных
+    name = db.Column(db.String(20))
+    text = db.Column(db.Text())
     picture_link = db.Column(db.String(100))

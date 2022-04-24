@@ -21,6 +21,7 @@ def create_app():  # запустить сервер
     db.init_app(app)  # запускается база данных
     migrate.init_app(app, db)  # подключаются миграции
 
+
     from .views import views  # подключается файл views( логика открытия информации на сайте)
     from .auth import auth  # авторизация и регистрация на сайте
 
@@ -30,11 +31,11 @@ def create_app():  # запустить сервер
                            url_prefix="/")  # связывание отдельных файликов с основным приложением.  app.register_blueprint - привязка файла к init
 
     from web_site.models import \
-        Experts  # import из базы данных таблицу с экспертами. Тут логика работы с базы данных, поэтому оно не привязывается
+        Experts,AgesHoroscop  # import из базы данных таблицу с экспертами. Тут логика работы с базы данных, поэтому оно не привязывается
     from .models import Zodiacs # импортируем таблицу с зодиаками
     admin = Admin(app, name='Astrology', template_mode='bootstrap3') # создаём панель администратора
     admin.add_view(ModelView(Zodiacs, db.session)) # добавляем таблицу с зодиаками в панель администратора
-
+    admin.add_view(ModelView(AgesHoroscop, db.session))
     create_database(app)  # создаются таблицы внутри базы данных . А здесь привязывается по-другому
 
     # сохранение авторизованного пользователя у себя в браузере.
