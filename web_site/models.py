@@ -31,3 +31,10 @@ class AgesHoroscop(db.Model):
     name = db.Column(db.String(20))
     text = db.Column(db.Text())
     picture_link = db.Column(db.String(100))
+
+class PsychologicalArticle(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # id - номер знака зодиака в базе данных
+    page = db.Column(db.String(20))
+    title = db.Column(db.String(20))
+    text = db.Column(db.Text())
+    picture_link = db.Column(db.String(100),default=None)

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, json
 from flask_login import login_required, current_user
 from . import db
-from .models import Experts, Zodiacs, AgesHoroscop
+from .models import Experts, Zodiacs, AgesHoroscop, PsychologicalArticle
 
 # В этом файле мы описываем логику открытия информационных страниц сайта
 
@@ -46,6 +46,14 @@ def zodiac_info(name):
 def AgeHoroscop_info(name):
     print(name)
     ages_horoscop = AgesHoroscop.query.filter_by(name=name).first()
+    if not ages_horoscop:
+        return render_template("no_expert.html")
+    return render_template("Age_horoscop.html", user=current_user, ages_horoscop=ages_horoscop)
+
+
+@views.route('/PsychologicalArticle/<name>')
+def AgeHoroscop_info(name):
+    article = PsychologicalArticle.query.filter_by(page=name)
     if not ages_horoscop:
         return render_template("no_expert.html")
     return render_template("Age_horoscop.html", user=current_user, ages_horoscop=ages_horoscop)
